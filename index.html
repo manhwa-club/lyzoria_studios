@@ -360,7 +360,7 @@
       <section class="section container reveal" id="upload">
         <h2>Send Your Files &amp; Project Details</h2>
         <p>Upload assets and drop your requirements. We will follow up for further questions.</p>
-        <form id="uploadForm" class="card form-grid" action="#" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" class="card form-grid">
           <div class="form-grid two-col">
             <input type="text" name="clientName" placeholder="Full name" required />
             <input type="email" name="clientEmail" placeholder="Email address" required />
@@ -435,7 +435,7 @@
         }
 
         uploadStatus.textContent =
-          'Thanks! Your project details and files are ready for review. We will contact you for further questions.';
+          'Thanks! This preview form is ready for your details and files. Connect this form to your backend/email service to receive submissions.';
         uploadForm.reset();
       });
     </script>
