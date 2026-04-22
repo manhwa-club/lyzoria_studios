@@ -346,7 +346,7 @@
         </div>
         <div class="card" style="margin-top: 1rem">
           <h3>Leave a Review</h3>
-          <form id="reviewForm" class="form-grid" novalidate>
+          <form id="reviewForm" class="form-grid">
             <div class="form-grid two-col">
               <input type="text" name="name" placeholder="Your name" required />
               <input type="text" name="role" placeholder="Your role / brand" required />
@@ -360,7 +360,7 @@
       <section class="section container reveal" id="upload">
         <h2>Send Your Files &amp; Project Details</h2>
         <p>Upload assets and drop your requirements. We will follow up for further questions.</p>
-        <form class="card form-grid" action="#" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" class="card form-grid" action="#" method="post" enctype="multipart/form-data">
           <div class="form-grid two-col">
             <input type="text" name="clientName" placeholder="Full name" required />
             <input type="email" name="clientEmail" placeholder="Email address" required />
@@ -371,6 +371,7 @@
             <input id="files" name="files" type="file" multiple />
           </div>
           <button class="btn btn-primary" type="submit">Send Project Inquiry</button>
+          <p id="uploadStatus" aria-live="polite"></p>
         </form>
       </section>
 
@@ -403,6 +404,11 @@
 
       const reviewForm = document.getElementById('reviewForm');
       const reviewsList = document.getElementById('reviewsList');
+      const uploadForm = document.getElementById('uploadForm');
+      const uploadStatus = document.getElementById('uploadStatus');
+
+      const escapeHtml = (value) =>
+        value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
       reviewForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -417,9 +423,20 @@
 
         const card = document.createElement('article');
         card.className = 'review-card';
-        card.innerHTML = `<p>“${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}”</p><strong>— ${name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}, ${role.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong>`;
+        card.innerHTML = `<p>“${escapeHtml(message)}”</p><strong>— ${escapeHtml(name)}, ${escapeHtml(role)}</strong>`;
         reviewsList.prepend(card);
         reviewForm.reset();
+      });
+
+      uploadForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!uploadForm.reportValidity()) {
+          return;
+        }
+
+        uploadStatus.textContent =
+          'Thanks! Your project details and files are ready for review. We will contact you for further questions.';
+        uploadForm.reset();
       });
     </script>
   </body>
