@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyzoria Studios | Premium Editing For Creators & Brands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080808;
+        --bg-soft: #121212;
+        --text: #f7f7f7;
+        --muted: #c7c7c7;
+        --gold: #d4af37;
+        --gold-soft: rgba(212, 175, 55, 0.12);
+        --border: rgba(255, 255, 255, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.16), transparent 38%), var(--bg);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, 90vw);
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: linear-gradient(165deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.2rem;
+        backdrop-filter: blur(3px);
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(212, 175, 55, 0.7);
+      }
+
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding: 2rem 0 3rem;
+      }
+
+      .brand {
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+        margin-bottom: 0.8rem;
+      }
+
+      .subtitle,
+      p {
+        color: var(--muted);
+      }
+
+      .subtitle {
+        max-width: 760px;
+        font-size: clamp(1.04rem, 1.8vw, 1.2rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.6rem;
+      }
+
+      .btn {
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 0.78rem 1.25rem;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, #f5d77a, var(--gold));
+        color: #0b0b0b;
+        box-shadow: 0 10px 25px var(--gold-soft);
+      }
+
+      .btn-secondary {
+        border-color: var(--border);
+        background: transparent;
+        color: var(--text);
+      }
+
+      .list-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .list-item {
+        border: 1px solid var(--border);
+        border-radius: 0.8rem;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 0.85rem 1rem;
+      }
+
+      .list-item span {
+        color: var(--gold);
+        margin-right: 0.3rem;
+      }
+
+      .social-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .social-link {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.65rem 1rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .form-grid.two-col {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        background: #101010;
+        border: 1px solid var(--border);
+        border-radius: 0.7rem;
+        color: var(--text);
+        padding: 0.75rem 0.85rem;
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .upload {
+        border: 1px dashed rgba(212, 175, 55, 0.6);
+        border-radius: 0.9rem;
+        padding: 0.8rem;
+        background: rgba(212, 175, 55, 0.05);
+      }
+
+      .reviews {
+        margin-top: 1rem;
+      }
+
+      .review-card {
+        border: 1px solid var(--border);
+        border-radius: 0.9rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .review-card strong {
+        color: var(--gold);
+      }
+
+      .cta {
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 1.2rem;
+        padding: 2.2rem 1.4rem;
+        background: linear-gradient(165deg, rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.02));
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 3rem;
+        padding: 1.2rem 0 2rem;
+        text-align: center;
+        color: #9d9d9d;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 680px) {
+        .section {
+          padding: 3.4rem 0;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero container">
+      <div class="reveal">
+        <p class="brand">Lyzoria Studios</p>
+        <h1>Premium Editing For Creators &amp; Brands</h1>
+        <p class="subtitle">
+          We help creators, businesses, and real estate professionals scale with clean, high-performing visuals.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#upload">Work With Us</a>
+          <a class="btn btn-secondary" href="#social">Contact Us</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section container reveal" id="services">
+        <h2>Services</h2>
+        <p>Crafted editing solutions designed for modern growth-focused brands and creators.</p>
+        <div class="card-grid">
+          <article class="card"><h3>Short Form Reels</h3></article>
+          <article class="card"><h3>Long Form Videos</h3></article>
+          <article class="card"><h3>Real Estate Walkthrough Edits</h3></article>
+          <article class="card"><h3>Motion Graphics &amp; Branding</h3></article>
+          <article class="card"><h3>Social Media Content Packages</h3></article>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="why-lyzoria">
+        <h2>Why Choose Lyzoria</h2>
+        <div class="list-grid">
+          <div class="list-item"><span>◆</span>Consistent quality</div>
+          <div class="list-item"><span>◆</span>Fast turnaround</div>
+          <div class="list-item"><span>◆</span>Reliable team</div>
+          <div class="list-item"><span>◆</span>Professional communication</div>
+          <div class="list-item"><span>◆</span>Content built to perform</div>
+          <div class="list-item"><span>◆</span>Long-term growth partner</div>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="industries">
+        <h2>Industries We Help</h2>
+        <div class="card-grid">
+          <article class="card"><h3>Creators</h3></article>
+          <article class="card"><h3>Real Estate</h3></article>
+          <article class="card"><h3>Coaches</h3></article>
+          <article class="card"><h3>Businesses</h3></article>
+          <article class="card"><h3>Agencies</h3></article>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="social">
+        <h2>Social Connect</h2>
+        <p>Reach us on your preferred platform.</p>
+        <div class="social-row">
+          <a class="social-link" href="https://www.instagram.com/lyzoria_studios?igsh=MWRvaG9hd2Jyemp2MQ==" target="_blank" rel="noreferrer noopener">Instagram</a>
+          <a class="social-link" href="https://x.com/lyzoria_studios" target="_blank" rel="noreferrer noopener">X (Twitter)</a>
+          <a class="social-link" href="https://wa.me/8549091566" target="_blank" rel="noreferrer noopener">WhatsApp</a>
+          <a class="social-link" href="mailto:lyzoriastudios@gmail.com">Email</a>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="reviews">
+        <h2>Client Reviews</h2>
+        <p>Trusted by creators and brands focused on premium growth.</p>
+        <div class="card-grid reviews" id="reviewsList">
+          <article class="review-card">
+            <p>“Lyzoria transformed our content quality overnight. Delivery is always polished and on time.”</p>
+            <strong>— Aria, Lifestyle Creator</strong>
+          </article>
+          <article class="review-card">
+            <p>“Our property walkthrough videos now convert far better. Premium edits with strong communication.”</p>
+            <strong>— Karan, Real Estate Consultant</strong>
+          </article>
+          <article class="review-card">
+            <p>“Feels like an in-house creative partner. Their motion branding made our launches look elite.”</p>
+            <strong>— Nexus Agency Team</strong>
+          </article>
+        </div>
+        <div class="card" style="margin-top: 1rem">
+          <h3>Leave a Review</h3>
+          <form id="reviewForm" class="form-grid" novalidate>
+            <div class="form-grid two-col">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="text" name="role" placeholder="Your role / brand" required />
+            </div>
+            <textarea name="message" placeholder="Share your experience" required></textarea>
+            <button class="btn btn-primary" type="submit">Submit Review</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="upload">
+        <h2>Send Your Files &amp; Project Details</h2>
+        <p>Upload assets and drop your requirements. We will follow up for further questions.</p>
+        <form class="card form-grid" action="#" method="post" enctype="multipart/form-data">
+          <div class="form-grid two-col">
+            <input type="text" name="clientName" placeholder="Full name" required />
+            <input type="email" name="clientEmail" placeholder="Email address" required />
+          </div>
+          <textarea name="projectBrief" placeholder="Project details / questions" required></textarea>
+          <div class="upload">
+            <label for="files">Upload files (video clips, brand assets, references)</label>
+            <input id="files" name="files" type="file" multiple />
+          </div>
+          <button class="btn btn-primary" type="submit">Send Project Inquiry</button>
+        </form>
+      </section>
+
+      <section class="section container reveal">
+        <div class="cta">
+          <h2>Ready to Elevate Your Content?</h2>
+          <p>Let Lyzoria Studios craft premium visuals that build trust and grow your brand.</p>
+          <a class="btn btn-primary" href="#upload">Start With Lyzoria</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Lyzoria Studios © 2026
+    </footer>
+
+    <script>
+      const revealElements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      revealElements.forEach((element) => observer.observe(element));
+
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsList = document.getElementById('reviewsList');
+
+      reviewForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(reviewForm);
+        const name = (data.get('name') || '').toString().trim();
+        const role = (data.get('role') || '').toString().trim();
+        const message = (data.get('message') || '').toString().trim();
+
+        if (!name || !role || !message) {
+          return;
+        }
+
+        const card = document.createElement('article');
+        card.className = 'review-card';
+        card.innerHTML = `<p>“${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}”</p><strong>— ${name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}, ${role.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong>`;
+        reviewsList.prepend(card);
+        reviewForm.reset();
+      });
+    </script>
+  </body>
+</html>
