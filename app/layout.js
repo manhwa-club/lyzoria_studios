@@ -1,14 +1,18 @@
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+
 export const metadata = {
   title: "Lyzoria Studios",
   description: "Premium editing for creators and brands.",
 };
 
-import "./globals.css";
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
